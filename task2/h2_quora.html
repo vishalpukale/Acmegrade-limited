@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .bg{
+           height: 100vh;
+           width: 100%;
+          }
+          .container
+          {
+            background-color: white;
+            
+            width: 702px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+          .heading
+          {
+            color: rgb(185, 43, 39);
+            text-align: center;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+          }
+          .head
+          {
+            font-size: 50px;
+          }
+          .paragraph
+          {
+            box-sizing: border-box;
+            position: relative;
+            top: -20px;
+            font-weight: bold;
+            color: #636466;
+            text-align: center;
+          }
+          .left-content
+          {
+            width: 350px;
+            
+            height: 261px;
+
+            position: absolute;
+            left: 350px;
+          }
+          .right-content
+          {
+            width: 350px;
+            height: 261px;
+
+          }
+          .terms
+          {
+            display: block;
+            color: #939598;
+            text-size-adjust: 100%;
+            font-size: 13px;
+            padding: 8px;
+            margin-left: 13px;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+          }
+          .buttons
+          {
+            text-align: center;
+            padding: 0px 0px 8px;
+            margin-top: 20px;
+          }
+          .google-btn
+          {
+            width: 80%;
+            height: 46px;
+            background-color: none;
+          }
+          .chrome
+          {
+            height: 20px;
+
+          }
+          .google-logo
+          {
+            width: 28px;
+            height: 28px;
+            vertical-align: top;
+            position: absolute;
+            left: 45px;
+            top: 220px;
+          }
+          .gbtn-txt
+          {
+            color: #282829;
+            margin-left: -40PX;
+            font-size: 15px;
+          }
+          .facebook-btn
+          {
+            width: 80%;
+            height: 46px;
+            margin-top: 10px;
+            background-color: none;
+          }
+          .facebook-logo
+          {
+            width: 28px;
+            height: 28px;
+            vertical-align: top;
+            position: absolute;
+            left: 45px;
+            top: 275px;
+          }
+          .fbtn-txt
+          {
+            color: #282829;
+            margin-left: -20PX;
+            font-size: 15px;
+          }
+          .signup-btn
+          {
+            margin-top: 10px;
+            width: 80%;
+            background-color: inherit;
+            border: none;
+          }
+          .lg
+          {
+            margin-left: 24px;
+            padding: 8px;
+            font-weight: 500;
+            font-size: 15px;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+          }
+          .sline
+          {
+            color: #939598;
+            font-weight: lighter;
+            border-width: 1px;
+            margin-top: 0px;
+          }
+          .email
+          {
+            font-weight: bold;
+            margin-left: 32px;
+            text-size-adjust: 100%;
+            margin-top: 20px;
+            font-size: 13px;
+            color: rgb(40, 40, 41);
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+          }
+          .emailinputcontainer
+          {
+            text-align: center;
+            margin-top: 5px;
+          }
+          .emailinput
+          {
+            width: 80%;
+            height: 40px;
+            border-color: #dee0e1;
+            border-style: solid;
+            border-width: 1px;
+            font-size: 15px;
+            text-align: justify;
+            border-radius: 3px;
+          }
+          .pass
+          {
+            font-weight: bold;
+            margin-left: 32px;
+            text-size-adjust: 100%;
+            margin-top: 20px;
+            font-size: 13px;
+            color: rgb(40, 40, 41);
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+          }
+          .passinputcontainer
+          {
+            text-align: center;
+            margin-top: 5px;
+          }
+          .passinput
+          {
+            width: 80%;
+            height: 40px;
+            border-color: #dee0e1;
+            border-style: solid;
+            border-width: 1px;
+            font-size: 15px;
+            text-align: justify;
+            border-radius: 3px;
+          }
+          .last
+          {
+            justify-content: space-between;
+            margin-top: 20px;
+          }
+          .forgetcontainer,.lastloginbtn
+          {
+            position: absolute;
+          }
+          .forgetcontainer 
+          {
+            left: 30px;
+            color: #939598;
+            font-size: 15px;
+          }
+          .lastloginbtn
+          {
+            left: 250px;
+            width: 70px;
+            height: 38px;
+            border-radius: 100px;
+            outline: none;
+            border-color: transparent;
+            background-color: #2e69ff;
+            color: white;
+            font-family: inherit;
+            font-size: 15px;
+            border-color: -internal-light-dark(rgba(118, 118, 118, 0.3), rgba(195, 195, 195, 0.3));
+          }
+          .line
+          {
+            margin-top: 25px;
+          }
+          .hindi-container
+          {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 20px;
+          }
+          .final
+          {
+            background-color: #f1f2f2;
+            width: 100%;
+            height: 51.2px;
+            margin-top: 24px;
+          }
+          .lastbox
+          {
+            padding: 15px;
+            text-align: center;
+          }
+          .finalcontent
+          {
+            text-decoration: none;
+            color: #636466;
+            font-size: 15px;
+          }
+          .signup-btn:hover
+          {
+            background-color: whitesmoke;
+          }
+          .signup-btn
+          {
+            border-radius: 30px;
+          }
+          
+    </style>
+</head>
+<body>
+    <div>
+        <img class="bg" src="quora.jpg" alt="none"> 
+        <div class="container">
+            <div class="heading">
+                <H1 class="head">Quora</H1>
+            </div>
+            <div class="paragraph">
+                A place to share knowledge and better understand the world
+            </div>
+            <div>
+                <div class="left-content">
+                  <div class="login-info">
+                    <div class="lg">
+                      Login
+                    </div>
+                    <div>
+                      <hr class="sline" width="80%" height="1px">
+                    </div>
+                  </div>
+                  <div class="mailbox">
+                    <div class="email">
+                      Email
+                    </div>
+                    <div class="emailinputcontainer">
+                      <input class="emailinput" type="text" placeholder="Your Email" min-height: 45px>
+                    </div>
+                  </div>
+                  <div class="passwordbox">
+                    <div class="pass">
+                      Password
+                    </div>
+                    <div class="passinputcontainer">
+                      <input type="password" class="passinput" placeholder="Your Password">
+                    </div>
+                  </div>
+                  <div class="last">
+                    <div class="forgetcontainer">
+                      Forget password?
+                    </div>
+                    <button class="lastloginbtn">Login</button>
+                  </div>
+                </div>
+                <div class="right-content">
+                    <div class="terms">
+                        "By continuing" 
+                        "you indicate that you agree" 
+                        "to Quora’s"
+                        <a href="https://www.quora.com/about/tos">Terms of Service</a> 
+                        "and" 
+                        <a href="https://www.quora.com/about/privacy">Privacy Policy.</a>
+                    </div>
+                    <div class="buttons">
+                      <button class="google-btn">
+                        
+                          <img class="google-logo" src="google.png" alt="">
+                          <div class="gbtn-txt">
+                            Continue with Google
+                          </div>
+                      </button>
+                      <button class="facebook-btn">
+                        
+                        <img class="facebook-logo" src="facebook.png" alt="">
+                        <div class="fbtn-txt">
+                          Continue with Facebook
+                        </div>
+                      </button>
+                      <button class="signup-btn">
+                        <div class="signup-txt">
+                          Sign up with email
+                        </div>
+                      </button>
+                    </div>
+                </div>
+                <hr class="line" width="100%" height="1px">
+                <div class="hindi-container">
+                  <a href="https://hi.quora.com/">हिन्दी</a>
+                  <span>></span>
+                </div>
+                <div class="final">
+                  <div class="lastbox">
+                    <a class="finalcontent" href="https://www.quora.com/about">About</a>
+                    <span>.</span>
+                    <a class="finalcontent" href="https://www.careers.quora.com/">Careers</a>
+                    <span>.</span>
+                    <a class="finalcontent" href="https://www.quora.com/about/privacy">Privacy</a>
+                    <span>.</span>
+                    <a class="finalcontent" href="https://www.quora.com/about/tos">Terms</a>
+                    <span>.</span>
+                    <a class="finalcontent" href="https://help.quora.com/hc/en-us/requests/new">Contact</a>
+                    <span>.</span>
+                    <a class="finalcontent" href="https://www.quora.com/about/languages">Languages</a>
+                    <span>.</span>
+                    <a class="finalcontent" href="https://www.quora.com/about/your_ad_choices">Your Ad Choices</a>
+                    <span>.</span>
+                    <a class="finalcontent" href="https://www.quora.com/press">Press</a>
+                    <span>.</span>
+                    <a class="finalcontent" href="">© Quora, Inc. 2023</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</body>
+</html>
