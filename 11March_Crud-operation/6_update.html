@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .parent
+        {
+            background-color: bisque;
+            padding: 20px;
+            width: fit-content;
+            text-align: center;
+        }
+        .inpt
+        {
+            display: block;
+            justify-content: center;
+            border-radius: 12px;
+            margin: 10px 0px;
+            padding: 10px;
+            border: none;
+        }
+        button
+        {
+            padding: 10px;
+        }
+        .result
+        {
+            display: inline-block;
+            background-color: aqua;
+            margin: 10px;
+            padding: 10px;
+            width: fit-content;
+            position: relative;
+        }
+        .name
+        {
+            color: red;
+            font-weight: bold;
+            font-size: 28px;
+            margin-top: 10px;
+        }
+        .capital
+        {
+            font-style: italic;
+            font-size: 26px;
+            color: rgb(255, 253, 251);
+        }
+        .population
+        {
+            font-size: 26px;
+        }
+
+        .close
+        {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+            opacity: 0.3;
+        }
+        .result:hover .close
+        {
+            opacity: 1;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <input class="inpt" type="text" id="country" placeholder="Country Name">
+        <input class="inpt" type="text" id="capital" placeholder="Capital name">
+        <input class="inpt" type="text" id="population" placeholder="Population">
+        <input type="color" id="color">
+        <button id="btn" onclick="createRecord()">Add Record</button>
+    </div>
+
+    <div id="demo">
+
+    </div>
+
+    <script>
+
+        currentAction='addrecord';
+
+        editInd=-1;
+
+        countryObj=document.getElementById('country');
+        capitalObj=document.getElementById('capital');
+        populationObj=document.getElementById('population');
+
+        resultObj=document.getElementById('demo');
+
+        colorObj=document.getElementById('color');
+
+        records=[
+        {name:'India', capital:'Delhi', pop:'100M'},
+        {name:'England', capital:'London', pop:'10M'},
+        {name:'France', capital:'Paris', pop:'6mil'}
+        ];
+
+        render();
+
+        function createRecord()
+        {
+            if(currentAction=='addrecord')
+            {
+                o={name:countryObj.value, capital:capitalObj.value, pop:populationObj.value, color:colorObj.value};
+                records.push(o);
+                console.log(records);
+            }
+            else(currentAction=='editrecord')
+            {
+                o={name:countryObj.value, capital:capitalObj.value, pop:populationObj.value, color:colorObj.value};
+                records[editInd]=o;
+                currentAction='addrecord';
+                btnObj.innerHTML='Add Record';
+            }
+
+            render();
+        }
+
+        function render()
+        {
+            html='';
+            for(i=0; i<records.length; i++)
+            {
+                html+=`<div class="result" style="background-color:${records[i].color}"   onclick="editRecord(${i})">
+                    <div class="close" onclick="deleteRecord(${i})">X</div>
+                    <div class="name">${records[i].name}</div>
+                    <div class="capital">${records[i].capital}</div>
+                    <div class="population">${records[i].pop}</div>
+                </div>`
+            }
+            resultObj.innerHTML=html;
+        }
+
+        function deleteRecord(index)
+        {
+            ans=confirm(`Are you Sure you want to Delete record ${records[index].name}?`);
+            if(ans==1)
+            {
+                records.splice(index,1);
+                console.log('After Deleting = ', records);
+                render();
+            }
+            else(ans==0)
+            {}
+        }
+
+        function editRecord(index)
+        {
+            object=records[index];
+
+            countryObj.value=object.name;
+            capitalObj.value=object.capital;
+            populationObj.value=object.pop;
+
+            btnObj=document.getElementById('btn');
+            btnObj.innerHTML='Update Record';
+            currentAction='editrecord';
+
+            editInd=index;
+        }
+
+    </script>
+</body>
+</html>

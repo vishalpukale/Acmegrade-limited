@@ -1,0 +1,21 @@
+C - Create
+R - Read/Search
+U - Update/Edit
+D - Delete/Remove
+
+JSON - JavaScript Object Notetion
+
+Array - Set of values
+    Array=['Bahubali', 'Bahu', '200 mil']
+
+Object - Set of property and value
+    JSON={name:'Bahubali', actor:'Bahu', collection:'200 mil'}
+
+
+Array of Object
+[
+    {name:'Avenger', collection:'500 mil'},
+    {name:'Naruto', collection:'600mil'},
+    {name:'Superman', collection:'800mil'}
+]
+Refer 2_console

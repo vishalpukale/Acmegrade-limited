@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .parent     
+        {
+            width: fit-content;
+            height: fit-content;
+            background-color: bisque;
+            text-align: center;
+            padding:10px;  
+        }
+        .parent input
+        {
+            display: block;
+            padding:10px;  
+            margin:10px 0px;
+            border-radius: 12px;
+        }
+        .color
+        {
+            padding: 0 !important;
+        }
+        .parent button
+        {
+            padding: 8px;
+            border-radius: 12px;
+        }
+        .card
+        {
+            position: relative;
+            background-color: darkcyan;
+            display: inline-block;
+            margin: 10px;
+            height: fit-contentpx;
+            width: fit-content;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .name
+        {
+            font-size: 24px;
+            font-weight: bold;
+            padding: 5px;
+        }
+        .capital
+        {
+            font-size: 24px;
+            font-weight: bold;
+            font-style: italic;
+            padding: 5px;
+        }
+        .pop
+        {
+            font-size: 24px;
+            font-weight: bold;
+            padding: 5px;
+        }
+        .close
+        {
+            position: absolute;
+            right: 0;
+            top: 0;
+            background-color: maroon;
+            color: white;
+            opacity: 0.3;
+            border-radius: 50%;
+            padding: 3px;
+        }
+        .card:hover .close
+        {
+            opacity: 1;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <input type="text" id="name" placeholder="Country Name">
+        <input type="text" id="capital" placeholder="Capital">
+        <input type="text" id="population" placeholder="Population">
+        <input class="color" type="color" id="color">
+        <button id="trigger" onclick="createRecord()">Add Record</button>
+    </div>
+
+    <div id="demo">
+
+    </div>
+
+    <script>
+
+        currentAction='add';
+        editInd=-1;
+
+        nameObj=document.getElementById('name');
+        capitalObj=document.getElementById('capital');
+        popObj=document.getElementById('population');
+        colorObj=document.getElementById('color');
+        triggerObj=document.getElementById('trigger');
+
+        records=[
+        {name:'India', capital:'Delhi', pop:'30mil'},
+        {name:'England', capital:'london', pop:'8mil'},
+        {name:'France', capital:'Paris', pop:'6mil'}
+        ];
+
+        render();
+
+        function createRecord()
+        {
+            if(currentAction=='add')
+            {
+                o={name:nameObj.value,capital:capitalObj.value,pop:popObj.value,color:colorObj.value}
+                records.push(o);
+                console.log('records');
+            }
+            else(currentAction=='edit')
+            {
+                o={name:nameObj.value,capital:capitalObj.value,pop:popObj.value,color:colorObj.value}
+                records[editInd]=o;
+                currentAction='add';
+                triggerObj.innerHTML='Add Record';
+            }
+
+            render();
+        }
+
+        function render()
+        {
+            html=''
+            for(i=0;i<records.length;i++)
+            {
+                html+=`<div class="card" onclick='initiateEdit(${i})' style='background-color:${records[i].color}'>
+                    <div class="close" onclick="deleteRecord(${i})">X</div>
+                    <div class="name">${records[i].name}</div>
+                    <div class="capital">${records[i].capital}</div>
+                    <div class="pop">${records[i].pop}</div>
+                </div>`
+            }
+            document.getElementById('demo').innerHTML=html;
+        }
+        
+        function deleteRecord(ind)
+        {
+            ans=confirm(`Are you sure you want to Delete ${records[ind].name}?`);
+            if(ans)
+            {
+                records.splice(ind,1);
+                console.log("After-deleting=",records);
+                render();
+            }
+        }
+
+        function initiateEdit(ind)
+        {
+            obj=records[ind];
+
+            nameObj.value=obj.name;
+            capitalObj.value=obj.capital;
+            popObj.value=obj.pop;
+
+            triggerObj.innerHTML='Update Record';
+            currentAction='edit';
+            editInd=ind;
+        }
+
+    </script>
+</body>
+</html>

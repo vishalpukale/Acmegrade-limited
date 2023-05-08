@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .parent
+        {   
+            background-color: aqua;
+            width: fit-content;
+            padding: 10px;
+            text-align: center;
+        }
+        .inpt
+        {
+            display: block;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 12px;
+            border: none;
+        }
+        .btn
+        {
+            padding: 10px;
+            border-radius: 12px;
+        }
+        .card
+        {
+            display: inline-block;
+            padding: 15px;
+            margin: 10px 0px;
+            margin-right: 10px;
+            border-radius: 10px;
+            position: relative;
+            background-color: bisque;
+        }
+        .country
+        {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .capital
+        {
+            font-size: 28px;
+            font-style: italic;
+        }
+        .population
+        {
+            font-size: 26px;
+            font-weight: bold;
+        }
+        .delete
+        {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            margin: 5px;
+            padding: 2px;
+            opacity: 0.4;
+        }
+        .card:hover .delete
+        {
+            opacity: 1;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="parent">
+
+        <input type="text" class="inpt" id="country" placeholder="Country Name">
+        <input type="text" class="inpt" id="capital" placeholder="Capital Name">
+        <input type="text" class="inpt" id="population" placeholder="population">
+        <input type="color" id="color">
+        <button class="btn" onclick="createRecord()">Add Record</button>
+
+    </div>
+
+    <div id="demo">
+
+    </div>
+
+    <script>
+
+        countryObj=document.getElementById('country');
+        capitalObj=document.getElementById('capital');
+        populationObj=document.getElementById('population');
+        colorObj=document.getElementById('color');
+
+        resultObj=document.getElementById('demo');
+
+        records=[
+        {name:'India', capital:'Delhi', pop:'100M'},
+        {name:'England', capital:'London', pop:'10M'},
+        {name:'France', capital:'Paris', pop:'6mil'}
+        ];
+
+        render();
+
+        function createRecord()
+        {
+            o={name:countryObj.value, capital:capitalObj.value, population:populationObj.value, color:colorObj.value};
+            records.push(o);
+            console.log(records);
+
+            render();
+        }
+
+        function render()
+        {
+
+            html='';
+            for(i=0; i<records.length; i++)
+            {
+                html += `<div class="card" style="background-color:${records[i].color}">
+                    <div class="delete" onclick="deleteRecord(${i})">X</div>
+                    <div class="country">${records[i].name}</div>
+                    <div class="capital">${records[i].capital}</div>
+                    <div class="population">${records[i].population}</div>
+                </div>`
+            }
+            resultObj.innerHTML=html;
+        }
+
+        function deleteRecord(index)
+        {
+            ans=confirm('Are you sure you want to delete the record');
+            if(ans=1)
+            {
+                records.splice(index,1);
+                console.log('after delete=',records)
+            }
+            render();
+        }
+
+    </script>
+</body>
+</html>
+
